@@ -92,6 +92,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* Hero video placeholder */
 .hero-vid-wrap{width:100%;max-width:860px;margin:0 auto;position:relative;z-index:1}
+.hero-vid-embed{position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(233,30,140,.25);overflow:hidden;background:#000}
+.hero-vid-embed iframe{width:100%;height:100%;border:0;display:block}
 
 /* Featured-in gold strip */
 .featured-strip-bar{background:transparent;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:2rem 4rem;display:flex;flex-direction:column;align-items:center;gap:1.25rem;position:relative}
@@ -1028,15 +1030,8 @@ footer{background:#000;border-top:1px solid var(--bd);padding:2rem 4rem;display:
     </p>
 
     <div class="hero-vid-wrap a0" style="transition-delay:.42s">
-      <div class="hero-vid-placeholder">
-        <div class="hvp-glow"></div>
-        <div class="hvp-inner">
-          <button class="hvp-play" onclick="alert('Video player will be embedded here.')">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,.2)" stroke-width="1"/><polygon points="10,8 17,12 10,16" fill="#fff"/></svg>
-          </button>
-          <p class="hvp-label bb">WATCH: How the AI-Assisted CMO Model Works</p>
-          <p class="hvp-sub">3 min preview — Free Training Breakdown</p>
-        </div>
+      <div class="hero-vid-embed">
+        <iframe src="https://drive.google.com/file/d/1Ip5je8nlClIIaSxoEgOQtzVFtHWj3JGz/preview" title="How the AI-Assisted CMO Model Works" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
 
