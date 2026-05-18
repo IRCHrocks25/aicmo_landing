@@ -671,29 +671,31 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .vdesc{font-size:1rem;color:rgba(255,255,255,.82);line-height:1.6}
 
 /* ── HOSTS ── */
-.hosts-sec{background:#000;position:relative;overflow:hidden}
-.hosts-sec::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(155,48,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(155,48,255,.06) 1px,transparent 1px);background-size:55px 55px;animation:gdrift 18s linear infinite;pointer-events:none;z-index:0}
-.hosts-sec-b1{position:absolute;width:700px;height:700px;border-radius:50%;background:rgba(155,48,255,.18);top:-200px;left:50%;transform:translateX(-50%);filter:blur(110px);animation:bfl 9s ease-in-out infinite;pointer-events:none;z-index:0}
-.hosts-sec-b2{position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(233,30,140,.1);bottom:-100px;right:-80px;filter:blur(100px);animation:bfl 8s ease-in-out infinite;animation-delay:-4s;pointer-events:none;z-index:0}
-.hosts-sec-b3{position:absolute;width:450px;height:450px;border-radius:50%;background:rgba(155,48,255,.12);bottom:-80px;left:-60px;filter:blur(100px);animation:bfl 8s ease-in-out infinite;animation-delay:-2s;pointer-events:none;z-index:0}
+.hosts-sec{background:#f1f1f1;position:relative;overflow:hidden}
+.hosts-sec::before{display:none}
+.hosts-sec-b1,.hosts-sec-b2,.hosts-sec-b3{display:none}
 .hosts-sec .sec-in{position:relative;z-index:1}
-.hosts-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3.5rem}
-.hcard{border:1px solid var(--bd2);overflow:hidden}
-.hcard-img-wrap{width:100%;position:relative;overflow:hidden;height:340px}
+.hosts-sec .slbl{color:var(--or);justify-content:flex-start;margin-bottom:.55rem}
+.hosts-sec .slbl::before{display:none}
+.hosts-title{color:#111;font-size:clamp(2.2rem,4.8vw,4.6rem)!important;line-height:.92!important}
+.hosts-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.8rem}
+.hcard{border:1px solid #cfcfcf;overflow:hidden;background:#fff}
+.hcard-img-wrap{width:100%;position:relative;overflow:hidden;height:248px;background:#ececec}
 .hcard-photo{width:100%;height:100%;display:block;object-fit:cover;object-position:center top}
-.hcard-name-bar{position:absolute;bottom:1.25rem;left:1.25rem;right:1.25rem;display:flex;align-items:center;gap:0}
-.hcard-name-pill{background:var(--cy);padding:.55rem 1.25rem;display:inline-flex;align-items:center;gap:0}
-.hcard-name-pill .hnb{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.06em;line-height:1;color:#fff;white-space:nowrap;margin-bottom:0}
-.hcard-top{background:var(--dk);padding:1.5rem 2rem;border-bottom:1px solid var(--bd)}
-.htitle{font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--or);line-height:1.55}
-.hcard-body{padding:2rem 2.5rem}
-.hcard-body p{font-size:1rem;line-height:1.83;color:rgba(255,255,255,.82)}.hcard-body strong{color:var(--wh);font-weight:600}
-.hstats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border-top:1px solid var(--bd)}
-.hst{padding:1.2rem;background:var(--dk);text-align:center}
-.hst .n{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;color:var(--cy);display:block;text-shadow:0 0 14px rgba(155,48,255,.3);line-height:1}
-.hst .l{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block;margin-top:.2rem}
-.together-box{margin-top:3rem;padding:2.5rem 3rem;border:1px solid var(--bd2);border-left:3px solid var(--or);background:rgba(233,30,140,.04)}
-.together-box p{font-size:1rem;line-height:1.82;color:rgba(255,255,255,.82)}.together-box strong{color:var(--wh);font-weight:600}
+.hcard-name-bar{position:absolute;bottom:.7rem;left:.7rem;right:auto;display:flex}
+.hcard-name-pill{background:var(--cy);padding:.32rem .6rem;display:inline-flex;align-items:center}
+.hcard-name-pill .hnb{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.07em;line-height:1;color:#fff;white-space:nowrap;margin-bottom:0}
+.hcard-top{background:#fff;padding:.7rem .85rem;border-top:1px solid #d8d8d8;border-bottom:1px solid #d8d8d8}
+.htitle{font-size:.66rem;letter-spacing:.055em;text-transform:uppercase;color:#464646;line-height:1.45}
+.hcard-body{padding:.9rem .85rem}
+.hcard-body p{font-size:.72rem;line-height:1.6;color:#2f2f2f}.hcard-body strong{color:#111;font-weight:700}
+.hstats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #d8d8d8;background:#fff}
+.hst{padding:.8rem .5rem;background:#fff;text-align:center;border-right:1px solid #d8d8d8}
+.hst:last-child{border-right:none}
+.hst .n{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;color:#E91E8C;display:block;line-height:1}
+.hst .l{font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;color:#6a6a6a;display:block;margin-top:.2rem;line-height:1.35}
+.together-box{margin-top:1rem;padding:1rem 1.15rem;border:1px solid #d8d8d8;border-left:2px solid var(--or);background:#fff}
+.together-box p{font-size:.72rem;line-height:1.6;color:#2e2e2e}.together-box strong{color:#111;font-weight:700}
 
 /* ── FAQ ── */
 .faq-sec{background:#F5F2EE}
@@ -1797,7 +1799,7 @@ footer{background:#000;border-top:1px solid var(--bd);padding:2rem 4rem;display:
   <div class="hosts-sec-b3"></div>
   <div class="sec-in">
     <div class="slbl rv">About Your Hosts</div>
-    <h2 class="sh bb rv d1" style="font-size:clamp(2rem,5.5vw,6.5rem);line-height:.9;color:#fff"><span class="cy">MEET</span> KANE MINKUS &amp; KENNETH TODD</h2>
+    <h2 class="sh bb rv d1 hosts-title">MEET KANE MINKUS &amp; KENNETH TODD</h2>
 
     <div class="hosts-grid">
       <div class="hcard rv d2">
@@ -1830,7 +1832,7 @@ footer{background:#000;border-top:1px solid var(--bd);padding:2rem 4rem;display:
           </div>
         </div>
         <div class="hcard-top">
-          <div class="htitle">Chief Marketing Officer, Industry Rockstar · ClickFunnels 2, Club Award Winner · Serial Seven-Figure Agency Founder · Co-Creator, AI-Assisted CMO Certification</div>
+          <div class="htitle">Chief Marketing Officer, Industry Rockstar · ClickFunnels 2 Comma Club Award Winner · Serial Seven-Figure Agency Founder · Co-Creator, AI-Assisted CMO Certification</div>
         </div>
         <div class="hcard-body">
           <p>Kenneth Todd is Industry Rockstar's <strong>Chief Marketing Officer, a two-time ClickFunnels Award winner,</strong> and a serial seven-figure agency founder who's been a fractional CMO and agency leader for over a decade. He helped take <strong>Industry Rockstar to the Inc. 5000 list two years running.</strong></p>
@@ -1840,7 +1842,7 @@ footer{background:#000;border-top:1px solid var(--bd);padding:2rem 4rem;display:
         <div class="hstats">
           <div class="hst"><span class="n bb">2×</span><span class="l">ClickFunnels Award</span></div>
           <div class="hst"><span class="n bb">Inc.</span><span class="l">5000 Two Years Running</span></div>
-          <div class="hst"><span class="n bb">$M+</span><span class="l">Monthly Ad Spend Managed</span></div>
+          <div class="hst"><span class="n bb">$1.5 M</span><span class="l">Monthly Ad Spend Managed</span></div>
         </div>
       </div>
     </div>
