@@ -8,7 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  transition:none!important;
+  animation:none!important;
+}
 :root{
   --or:#E91E8C;--or2:#FF4DB8;--or3:#FF80D0;
   --or-glow:rgba(233,30,140,.45);
@@ -20,7 +26,7 @@
   --mu:rgba(255,255,255,.45);--mu2:rgba(255,255,255,.28);--mu3:rgba(255,255,255,.18);
   --bd:rgba(255,255,255,.07);--bd2:rgba(255,255,255,.12);--bd3:rgba(255,255,255,.18);
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{background:var(--bk);color:var(--wh);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:auto;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
 .bb{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em}
 a{text-decoration:none;color:inherit}
@@ -112,7 +118,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .h-l{display:none}
 
 /* Hero animations */
-.a0{opacity:0;transform:translateY(22px)}.a0.go{opacity:1;transform:translateY(0);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.a0,.a0.go{opacity:1;transform:none;transition:none}
 
 .pre-h{font-size:1rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);line-height:1.75;max-width:900px;margin-bottom:1.4rem;text-align:center}
 .eyebrow-live{display:inline-flex;align-items:center;gap:.55rem;font-size:1rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--or);margin-bottom:1rem}
@@ -137,8 +143,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .featured-strip-bar::after{display:none}
 .featured-strip-label{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.3em;color:rgba(255,255,255,.4);text-transform:uppercase}
 .featured-strip-logos{display:flex;align-items:center;justify-content:center;gap:3.5rem;flex-wrap:wrap}
-.featured-strip-logos img{height:26px;width:auto;display:block;opacity:.6;filter:brightness(10) saturate(0);transition:opacity .3s}
-.featured-strip-logos img:hover{opacity:1}
+.featured-strip-logos img{
+  height:26px;
+  width:auto;
+  display:block;
+  opacity:.95;
+  filter:none;
+  transition:opacity .3s,transform .2s;
+}
+.featured-strip-logos img:hover{opacity:1;transform:translateY(-1px)}
 .hero-vid-placeholder{position:relative;width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#0a0018 0%,#150030 50%,#0d0015 100%);border:1px solid rgba(233,30,140,.25);overflow:hidden;cursor:pointer}
 .hero-vid-placeholder::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(155,48,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(155,48,255,.05) 1px,transparent 1px);background-size:40px 40px}
 .hvp-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(233,30,140,.12);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(80px);animation:bfl 6s ease-in-out infinite;pointer-events:none}
@@ -247,9 +260,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .sh .cy{color:var(--cy);text-shadow:0 0 22px rgba(155,48,255,.2)}.sh .or{color:var(--or)}.sh .sk{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.6)}
 
 /* REVEAL */
-.rv{opacity:0;transform:translateY(38px);transition:opacity .72s cubic-bezier(.16,1,.3,1),transform .72s cubic-bezier(.16,1,.3,1)}
-.rv.vis{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.08s}.d2{transition-delay:.18s}.d3{transition-delay:.28s}.d4{transition-delay:.38s}.d5{transition-delay:.48s}.d6{transition-delay:.58s}
+.rv,.rv.vis{opacity:1;transform:none;transition:none}
+.d1,.d2,.d3,.d4,.d5,.d6{transition-delay:0s}
 
 /* ── LEAD / THE TRUTH ── */
 /* ── STUDENT WORK GALLERY — horizontal marquee ── */
@@ -847,6 +859,12 @@ footer{background:#000;border-top:1px solid var(--bd);padding:2rem 4rem;display:
 
 /* Mobile 768px */
 @media(max-width:768px){
+  *,*::before,*::after{
+    transition:none!important;
+    animation:none!important;
+    transform:none!important;
+    scroll-behavior:auto!important;
+  }
   .sec,.sec-in{padding:3rem 1.25rem}
   .btn,.n-cta,.fb,.ep-btn{
     background:#EF2F97!important;
@@ -2051,23 +2069,6 @@ function toggleWa(trigger){
   if(!isOpen){item.classList.add('open');body.classList.add('open')}
 }
 
-/* ── WHO SECTION PARALLAX ── */
-(function(){
-  const img=document.querySelector('.who-hero-img');
-  const wrap=document.querySelector('.who-img-wrap');
-  if(!img||!wrap)return;
-  function onScroll(){
-    const rect=wrap.getBoundingClientRect();
-    const wh=window.innerHeight;
-    if(rect.bottom<0||rect.top>wh)return;
-    const progress=(wh-rect.top)/(wh+rect.height);
-    const offset=(progress-.5)*120;
-    img.style.transform=`translateY(${offset}px)`;
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  onScroll();
-})();
-
 /* ── EXIT INTENT ── */
 let exitShown=false;
 function closeExit(){document.getElementById('exit-popup').classList.remove('show')}
@@ -2078,13 +2079,6 @@ document.addEventListener('mouseleave',e=>{
   }
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeExit()});
-
-/* ── HERO ANIMATIONS ── */
-window.addEventListener('load',()=>{
-  document.querySelectorAll('.a0').forEach((el,i)=>{
-    setTimeout(()=>el.classList.add('go'),50);
-  });
-});
 
 /* ── COUNTDOWN TIMER — set your event date ── */
 const EVT=new Date('2026-05-27T11:00:00-07:00');
@@ -2097,30 +2091,6 @@ function tick(){
   ids.forEach(([a,b],i)=>{[a,b].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=pad(vals[i])})});
 }
 tick();setInterval(tick,1000);
-
-/* ── SCROLL REVEAL ── */
-const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-
-/* ── MAGNETIC BUTTONS ── */
-document.querySelectorAll('button,.btn').forEach(b=>{
-  b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.15}px)`});
-  b.addEventListener('mouseleave',()=>b.style.transform='');
-});
-
-/* ── RADIAL GLOW ON HOVER ── */
-document.querySelectorAll('.fc,.di,.fi-item,.pcard,.vc,.wi').forEach(c=>{
-  c.addEventListener('mousemove',e=>{
-    const r=c.getBoundingClientRect();
-    const x=((e.clientX-r.left)/r.width*100).toFixed(1),y=((e.clientY-r.top)/r.height*100).toFixed(1);
-    c.style.backgroundImage=`radial-gradient(circle at ${x}% ${y}%, rgba(233,30,140,.07) 0%, transparent 52%)`;
-  });
-  c.addEventListener('mouseleave',()=>c.style.backgroundImage='');
-});
-
-/* ── PARALLAX BG WORD ── */
-const bgw=document.querySelector('.h-bgtxt');
-window.addEventListener('scroll',()=>{if(bgw&&scrollY<innerHeight)bgw.style.transform=`translate(-50%,calc(-48% + ${scrollY*.18}px))`});
 
 /* ── REGISTRATION ── */
 function handleReg(){
@@ -2137,7 +2107,7 @@ function scrollToReg(){
   if(!target)return;
   const offset=18;
   const top=target.getBoundingClientRect().top+window.pageYOffset-offset;
-  window.scrollTo({top,behavior:'smooth'});
+  window.scrollTo({top,behavior:'auto'});
 }
 function showToast(){
   const t=document.getElementById('toast');
